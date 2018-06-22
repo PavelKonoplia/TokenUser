@@ -14,7 +14,4 @@ export class DataListComponent {
   constructor(dataService: DataService) {
     dataService.getData().subscribe((dataList: Data[]) => this.dataList = dataList);
   }
-  ngAfterViewChecked(){
-  this.dataList?console.log(this.dataList):null;
-  }
 }

@@ -14,7 +14,7 @@ export interface ComponentCanDeactivate{
 }
 
 @Injectable()
-export class AuthGuard implements CanActivate, CanDeactivate<ComponentCanDeactivate> {
+export class Guard implements CanActivate, CanDeactivate<ComponentCanDeactivate> {
 
     constructor(private authService: AuthenticationService, private router: Router) { }
 

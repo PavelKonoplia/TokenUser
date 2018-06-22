@@ -13,7 +13,7 @@ import { HttpClientModule }   from '@angular/common/http';
 import { UserModule } from './components/user/user.module';
 import { LoginComponent } from 'src/app/components/user/login/login/login.component';
 import { RegistrationComponent } from 'src/app/components/user/registration/registration/registration.component';
-import { AuthGuard } from './services/auth-guard.service';
+import { Guard } from './services/guard.service';
 import { AuthenticationService } from './services/authentication.service';
 
 
@@ -27,9 +27,10 @@ import { AuthenticationService } from './services/authentication.service';
     UserModule,
     RouterModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [UserService, AuthGuard, AuthenticationService],
+  providers: [UserService, Guard, AuthenticationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
