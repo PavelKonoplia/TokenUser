@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from '../common/models';
 import { environment } from '../../environments/environment';
-import { HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 const API_URL = environment.apiUrl;
@@ -16,15 +16,17 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  public loginUser(username: string, password: string){
+  public loginUser(username: string, password: string) {
     let request = `grant_type=password&username=${username}&password=${password}`;
     return this.http
       .post(API_URL + TOKEN_API, request);
   }
 
-  public registrateUser(user: User){
+  public registrateUser(user: User) {
     return this.http
-      .post(API_URL + USER_API, user);
+      .post(API_URL + USER_API, user).subscribe((response)=>{
+        console.log(response)
+      });
   }
 
   public getUserByName(userName: string) {

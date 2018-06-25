@@ -1,19 +1,22 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { UserService } from './user.service';
 
-import { UserService } from '.';
+
+interface IToken{
+    access_token:string
+}
 
 @Injectable()
 export class AuthenticationService {
 
-    token: string;
+    public token: string;
     redirectUrl: string;
 
-    constructor(private http: HttpClient, private userService: UserService) { }
+    constructor(private userService: UserService) { }
 
     login(username: string, password: string) {
-       this.userService.loginUser(username, password).subscribe((token) => this.token = token.toString());
+       this.userService.loginUser(username, password).subscribe((token:IToken) => this.token = token.access_token.toString());
     }
 
     logout() {

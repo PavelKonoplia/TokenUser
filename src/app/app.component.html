@@ -1,12 +1,24 @@
+<div class="container-fluid col-md-8">
 <h1 class="">
   Web Api Token User
 </h1>
-<nav>
-  <a routerLink="/add-data" routerLinkActive="active"> Public </a>
-  <a routerLink="/data-list" routerLinkActive="active"> Private </a>
-  <a routerLink="/login" routerLinkActive="active"> Log in </a>
-  <a routerLink="/registration" routerLinkActive="active"> Registration </a>
-</nav>
-<div>
-  <router-outlet></router-outlet>
+  <nav class="navbar navbar-dark bg-primary navbar-expand-sm ">
+    <ul class="navbar-nav mr-auto ">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/add-data" routerLinkActive="active"> Public </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/data-list" routerLinkActive="active"> Private </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/login" routerLinkActive="active"> Log in </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/registration" routerLinkActive="active"> Registration </a>
+      </li>
+    </ul>
+  </nav>
+  <div class="container-fluid py-4">
+    <router-outlet></router-outlet>
+  </div>
 </div>

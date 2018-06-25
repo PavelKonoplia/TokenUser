@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
-import { UserService } from '../../../../services';
+import { AuthenticationService } from '../../../../services/authentication.service';
 
 @Component({
   selector: 'login',
@@ -9,7 +9,7 @@ import { UserService } from '../../../../services';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
+  constructor(private authService: AuthenticationService) { }
 
   ngOnInit() {
   }
@@ -20,6 +20,10 @@ export class LoginComponent implements OnInit {
   });
 
   submit() {
-    this.userService.loginUser(this.loginForm.get("userName").value, this.loginForm.get("password").value);
+    this.authService.login(this.loginForm.get("userName").value, this.loginForm.get("password").value);
+  }
+
+  logout(){
+    this.authService.logout();
   }
 }
