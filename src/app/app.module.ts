@@ -13,7 +13,6 @@ import { UserModule } from './components/user/user.module';
 import { LoginComponent } from 'src/app/components/user/login/login/login.component';
 import { RegistrationComponent } from 'src/app/components/user/registration/registration/registration.component';
 import { Guard } from './services/guard.service';
-import { AuthenticationService } from './services/authentication.service';
 import { UserService } from 'src/app/services/user.service';
 
 
@@ -30,7 +29,7 @@ import { UserService } from 'src/app/services/user.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [UserService, Guard, AuthenticationService],
+  providers: [UserService, Guard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

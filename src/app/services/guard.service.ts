@@ -6,8 +6,8 @@ import {
     RouterStateSnapshot,
     CanDeactivate
 } from "@angular/router";
-import { AuthenticationService } from "./authentication.service";
 import { Observable } from "rxjs/internal/Observable";
+import { UserService } from "./user.service";
 
 export interface ComponentCanDeactivate{
     canDeactivate: () => boolean | Observable<boolean>;
@@ -16,16 +16,14 @@ export interface ComponentCanDeactivate{
 @Injectable()
 export class Guard implements CanActivate, CanDeactivate<ComponentCanDeactivate> {
 
-    constructor(private authService: AuthenticationService, private router: Router) { }
+    constructor(private userService: UserService, private router: Router) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
 
-        if (this.authService.token) {
+        if (this.userService.token) {
             return true;
         }
         else {
-            this.authService.redirectUrl = state.url;
-
             this.router.navigate(["/login"]);
             return false;
         }        

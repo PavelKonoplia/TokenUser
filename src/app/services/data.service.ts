@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 import { map } from "rxjs/operators";
-import { AuthenticationService } from './authentication.service';
+import { UserService } from './user.service';
 
 const API_URL = environment.apiUrl;
 
@@ -16,12 +16,12 @@ const DATA_API = '/data';
 })
 export class DataService {
 
-  constructor(private http: HttpClient, private authService: AuthenticationService) { }
+  constructor(private http: HttpClient, private userService: UserService) { }
 
   getData() {
     let header = new HttpHeaders({
       'Content-Type': 'application/json', 'Authorization':
-        `Bearer ${this.authService.token}`
+        `Bearer ${this.userService.token}`
     });
     return this.http
       .get(API_URL + DATA_API, { headers: header });
